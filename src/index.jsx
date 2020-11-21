@@ -1,8 +1,29 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { render } from 'react-dom';
 import './index.html';
 import './style.css';
+import Joke from './component/index.jsx';
+import jokes from './jokes.js';
 
+const App = () => {
+  return (
+    <>
+      <div className="container">
+        {jokes.map((joke) => (
+          <Joke
+            likes={joke.likes}
+            dislikes={joke.dislikes}
+            id={joke.id}
+            text={joke.text}
+            name={joke.name}
+          />
+        ))}
+      </div>
+    </>
+  );
+};
+
+/*
 const App = () => {
   const [like, setLike] = useState(0);
   const [unlike, setUnlike] = useState(0);
@@ -50,5 +71,6 @@ const App = () => {
     </>
   );
 };
+*/
 
 render(<App />, document.querySelector('#app'));
